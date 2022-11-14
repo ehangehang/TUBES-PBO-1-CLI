@@ -17,6 +17,9 @@ public class Admin {
     private String ttl;
     private String alamat;
     private User[] arrOfUser;
+    private User[] arrOfUserAdmitted;
+    private int index = 0;
+    private int indexAdmitted = 0;
     
     public Admin(String admin_id, String email, String phoneNum,
             String adminName, boolean gender, String ttl, String alamat)
@@ -29,6 +32,7 @@ public class Admin {
         setTtl(ttl);
         setAlamat(alamat);
         arrOfUser = new User[1000];
+        arrOfUserAdmitted = new User[1000];
     }
     // Setter
     final public void setAdmin(String admin_id)
@@ -97,11 +101,16 @@ public class Admin {
         return this.alamat;
     }
     // Function
-    public void admitCheckIn(User data, int index)
+    public void addUser(User data)
+    {
+        arrOfUser[index]=data;
+        index++;
+    }
+    public void admitCheckIn(User data)
     {
         if(data.checkIn()){
-            arrOfUser[index]=data;
-            index++;
+            arrOfUserAdmitted[indexAdmitted]=data;
+            indexAdmitted++;
         }else{
             System.out.println("--- Data User Check-In with form ---");
             System.out.println("User ID : "+data.getUserId());
@@ -119,29 +128,46 @@ public class Admin {
             System.out.print("Hasil :  ");
             boolean hasil = scan.nextBoolean();
             if(hasil){
-                arrOfUser[index]=data;
-                index++;
+                arrOfUserAdmitted[indexAdmitted]=data;
+                indexAdmitted++;
             }
         }
         
     }
-    public void viewCheckedInUser(int index)
+    public void viewAllUser()
     {
         System.out.println("---- Data Semua User ----");
         for(int i=0; i < index; i++)
         {
-            //if(arrOfUser[i].getName()!=null)
-            
-            //{
             System.out.println("Data ke-"+(i+1));
             System.out.println("User ID : "+arrOfUser[i].getUserId());
             System.out.println("Photo : "+arrOfUser[i].getPhoto());
             System.out.println("Email : "+arrOfUser[i].getEmail());
             System.out.println("Phone : "+arrOfUser[i].getPhone());
             System.out.println("Name : "+arrOfUser[i].getName());
-            //System.out.println("Gender : "+arrOfUser[i].getGender());
+            System.out.println("Gender : "+arrOfUser[i].getGender());
             System.out.println("TTL : "+arrOfUser[i].getTtl());
             System.out.println("Alamat : "+arrOfUser[i].getAlamat());
+            System.out.println("CHECK-IN STATUS : "+arrOfUser[i].checkIn());
+        }
+    }
+    public void viewCheckedInUser()
+    {
+        System.out.println("---- Data Semua User Yang Sudah Check-In ----");
+        for(int i=0; i < indexAdmitted; i++)
+        {
+            //if(arrOfUser[i].getName()!=null)
+            
+            //{
+            System.out.println("Data ke-"+(i+1));
+            System.out.println("User ID : "+arrOfUserAdmitted[i].getUserId());
+            System.out.println("Photo : "+arrOfUserAdmitted[i].getPhoto());
+            System.out.println("Email : "+arrOfUserAdmitted[i].getEmail());
+            System.out.println("Phone : "+arrOfUserAdmitted[i].getPhone());
+            System.out.println("Name : "+arrOfUserAdmitted[i].getName());
+            System.out.println("Gender : "+arrOfUserAdmitted[i].getGender());
+            System.out.println("TTL : "+arrOfUserAdmitted[i].getTtl());
+            System.out.println("Alamat : "+arrOfUserAdmitted[i].getAlamat());
             //}else{
             //    break;
             //}

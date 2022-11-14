@@ -16,6 +16,7 @@ public class Driver {
 
     /*
     TODO:
+        - Create 2 menus of Admin and User
         APP FLOW (User):
             - User register
             - User login
@@ -36,16 +37,25 @@ public class Driver {
             - can logout -> exit program
         USERS:
             User:
-                - can register
+                [v] (with constructor) can register
                 - can login
-                - can check-in (automated/manual)
+                [v] can check-in (automated/manual)
                 - can check-out (logout)
                 - can view profile
             Admin:
-                - can admit form
-                - can view checked-in user
-                - can view profile
+                [v] can admit form
+                [v] can view checked-in user
+                [v] can view profile
     */
+    
+    public static void printMenu() {
+        System.out.println("Command Options: ");
+        System.out.println("1: View Profile Admin");
+        System.out.println("2: View All User");
+        System.out.println("3: View Checked-In User");
+        System.out.println("4: Admit Check-In User");
+        System.out.println("0: Quit");
+    }
     
     public static void main(String[] args) {
         String failedPhoto = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
@@ -58,40 +68,38 @@ public class Driver {
         User user2 = new User("002", "mhmmd.fzan02@gmail.com", "+62869696969", "Muhammad Fauzan", true, "29-2-2001", "Palembang", "X002", dummyPhoto);
         User user3 = new User("003", "rizkyaria@gmail.com", "+628123456789", "Rizky Aria Mu'alim", true, "09-05-2002", "Jakarta", "X003", dummyPhoto);
         
-        int index = 0;
         user1.setNewPhoto(dummyNewPhoto);
         user2.setNewPhoto(dummyNewPhoto);
         user3.setNewPhoto(failedPhoto);
-        System.out.println(user1.checkIn());
         
-        System.out.println("Command Options: ");
-        System.out.println("1: View Profile Admin");
-        System.out.println("2: Admit Check-In User");
-        System.out.println("3: View Checked-In User");
-        System.out.println("0: Quit");
+        admin1.addUser(user1);
+        admin1.addUser(user2);
+        admin1.addUser(user3);
+        
         Scanner scan = new Scanner(System.in);
-        int pilihan = scan.nextInt();
-        
+        printMenu();
+        System.out.print("Pilih menu: "); int pilihan = scan.nextInt();
         
         do {
-        switch (pilihan){
-            case 1:
-                admin1.viewProFile();
-                break;
-            case 2:
-                admin1.admitCheckIn(user1, index);
-                index++;
-                admin1.admitCheckIn(user2, index);
-                index++;
-                admin1.admitCheckIn(user3, index);
-                index++;
-                break;
-            case 3:
-                admin1.viewCheckedInUser(index);
-                break;
+            switch (pilihan){
+                case 1:
+                    admin1.viewProFile();
+                    break;
+                case 2:
+                    admin1.viewAllUser();
+                    break;
+                case 3:
+                    admin1.viewCheckedInUser();
+                    break;
+                case 4:
+                    admin1.admitCheckIn(user1);
+                    admin1.admitCheckIn(user2);
+                    admin1.admitCheckIn(user3);
+                    break;
             }
-        System.out.println("Masukkan input: ");
-        pilihan = scan.nextInt();
+            System.out.println("\n");
+            printMenu();
+            System.out.print("Pilih menu: "); pilihan = scan.nextInt();
         } while (pilihan != 0);
     }
     
