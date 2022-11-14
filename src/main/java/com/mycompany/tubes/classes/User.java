@@ -160,4 +160,15 @@ public class User {
 //        
 //    }
     
+    public void displayInfo() {
+        System.out.println("==== Profil User ====");
+        System.out.println("Nama\t: " + getName());
+        System.out.println("Email\t: " + getEmail());
+        System.out.println("No.Telp\t: " + getPhone());
+        System.out.println("Gender\t: " + getGender());
+        System.out.println("TTL\t: " + getTtl());
+        System.out.println("Alamat\t: " + getAlamat());
+        System.out.println("Foto profil\t: " + getPhoto());
+    }
+    
 }
