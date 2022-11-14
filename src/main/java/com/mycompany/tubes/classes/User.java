@@ -97,8 +97,11 @@ public class User {
         return name;
     }
 
-    public boolean isGender() {
-        return gender;
+    public String getGender() {
+        if (gender) {
+            return "Laki-laki";
+        }
+        return "Perempuan";
     }
 
     public String getTtl() {
