@@ -100,7 +100,8 @@ public class Admin {
     public void admitCheckIn(User data, int index)
     {
         if(data.checkIn()){
-            // masukin array
+            arrOfUser[index]=data;
+            index++;
         }else{
             System.out.println("--- Data User Check-In with form ---");
             System.out.println("User ID : "+data.getUserId());
@@ -119,29 +120,31 @@ public class Admin {
             boolean hasil = scan.nextBoolean();
             if(hasil){
                 arrOfUser[index]=data;
+                index++;
             }
         }
         
     }
-    public void viewCheckedInUser()
+    public void viewCheckedInUser(int index)
     {
         System.out.println("---- Data Semua User ----");
-        for(int i=0; i < 1000; i++)
+        for(int i=0; i < index; i++)
         {
-            if(arrOfUser[i].getName()!=null)
-            {
-                System.out.println("Data ke-"+(i+1));
-                System.out.println("User ID : "+arrOfUser[i].getUserId());
-                System.out.println("Photo : "+arrOfUser[i].getPhoto());
-                System.out.println("Email : "+arrOfUser[i].getEmail());
-                System.out.println("Phone : "+arrOfUser[i].getPhone());
-                System.out.println("Name : "+arrOfUser[i].getName());
-                //System.out.println("Gender : "+arrOfUser[i].getGender());
-                System.out.println("TTL : "+arrOfUser[i].getTtl());
-                System.out.println("Alamat : "+arrOfUser[i].getAlamat());
-            }else{
-                break;
-            }
+            //if(arrOfUser[i].getName()!=null)
+            
+            //{
+            System.out.println("Data ke-"+(i+1));
+            System.out.println("User ID : "+arrOfUser[i].getUserId());
+            System.out.println("Photo : "+arrOfUser[i].getPhoto());
+            System.out.println("Email : "+arrOfUser[i].getEmail());
+            System.out.println("Phone : "+arrOfUser[i].getPhone());
+            System.out.println("Name : "+arrOfUser[i].getName());
+            //System.out.println("Gender : "+arrOfUser[i].getGender());
+            System.out.println("TTL : "+arrOfUser[i].getTtl());
+            System.out.println("Alamat : "+arrOfUser[i].getAlamat());
+            //}else{
+            //    break;
+            //}
         }
     }
     public void viewProFile()
