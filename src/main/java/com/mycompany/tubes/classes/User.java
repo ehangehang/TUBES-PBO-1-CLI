@@ -21,9 +21,10 @@ public class User {
     public String alamat;
     protected String instanceId;
     public String photo;
-    public String requestForm;
+    public String newPhoto;
+//    public boolean requestForm;
 
-    public User(String userId, String email, String phone, String name, boolean gender, String ttl, String alamat, String instanceId, String photo, String requestForm) {
+    public User(String userId, String email, String phone, String name, boolean gender, String ttl, String alamat, String instanceId, String photo) {
         this.userId = userId;
         this.email = email;
         this.phone = phone;
@@ -33,7 +34,6 @@ public class User {
         this.alamat = alamat;
         this.instanceId = instanceId;
         this.photo = photo;
-        this.requestForm = requestForm;
     }
     
     public void setUserId(String userId) {
@@ -67,11 +67,19 @@ public class User {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
-
-//    tambahin input dan ngirim ke admin
-    public void setRequestForm(String requestForm) {
-        this.requestForm = requestForm;
+    
+    public void setNewPhoto(String newPhoto) {
+        this.newPhoto = newPhoto;
     }
+
+//  tambahin input dan ngirim ke admin
+//    public void setRequestForm(String newPhoto) {
+//        if (!checkIn(this.photo, newPhoto)) {
+//            this.requestForm = true;
+//        } else {
+//            this.requestForm = false;
+//        }
+//    }
 
     public String getUserId() {
         return userId;
@@ -109,73 +117,44 @@ public class User {
         return photo;
     }
     
-//  unchecked!!!
-//  can be an abstract method to init/call in checkIn() method
-    public int editDistance(String s1, String s2) {
-        s1 = s1.toLowerCase();
-        s2 = s2.toLowerCase();
-        
-        int[] cost = new int[s2.length()+1];
-        for (int i = 0; i <= s1.length(); i++) {
-            int lastValue = i;
-            for (int j = 0; i <= s2.length(); j++) {
-                if (i==0) {
-                    cost[j] = j;
-                } else {
-                    if (j > 0) {
-                        int newValue = cost[j-1];
-                        if (s1.charAt(i-1) != s2.charAt(j-1)) {
-                            newValue = Math.min(Math.min(newValue, lastValue), cost[j]) + 1;
-                            cost[j-1] = lastValue;
-                            lastValue = newValue;
-                        }
-                    }
-                }
-            }
-            if (i > 0) {
-                cost[s2.length()] = lastValue;
-            }
-        }
-        return cost[s2.length()];
+    public String getNewPhoto() {
+        return newPhoto;
     }
     
+//    public boolean getRequestForm() {
+//        return requestForm;
+//    }
+    
 //  unchecked!!!
-    public boolean checkIn(String photo, String newPhoto) {
+    public boolean checkIn() {
+        String xPhoto = photo.toLowerCase();
+        String xNewPhoto = newPhoto.toLowerCase();
         
-        
-        
-        String longer = photo, shorter = newPhoto;
-        if (longer.length() < shorter.length()) {
-            longer = newPhoto;
-            shorter = photo;
-        }
-        
-        int longerLength = longer.length();
-        double accuracy = 0.0;
-        if (longerLength == 0) {
-            accuracy = 1.0;
+        double correct = 0;
+        if (xPhoto.length() == xNewPhoto.length()) {
+            for (int i = 0; i < xPhoto.length(); i++) {
+                if (xPhoto.charAt(i) == xNewPhoto.charAt(i)){
+                    correct++;
+                }
+            }
         } else {
-            accuracy = (longerLength - editDistance(longer, shorter)) / (double)longerLength;
+            return false;
         }
         
-        if (accuracy > 0.7) {
-            return true;
-        }
-                
-        return false;
+        return (correct/Double.valueOf(xPhoto.length())) > 0.6;
     }
     
 //  send request to admin
-    public String requestCheckIn(boolean checkInStatus) {
-        if (checkInStatus) {
-            
-        }
-        return "N/A";
-    }
+//  should be in admin(?)
+//    public String requestCheckIn(boolean checkInStatus) {
+//        if (!checkInStatus) {
+//            
+//        }
+//        return "N/A";
+//    }
     
-    public void checkOut() {
-        System.out.println("Program akan keluar...");
-        System.exit(0);
-    }
+//    public void checkOut() {
+//        
+//    }
     
 }
