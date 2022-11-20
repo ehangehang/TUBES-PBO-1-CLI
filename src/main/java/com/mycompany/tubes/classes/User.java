@@ -24,6 +24,18 @@ public class User {
     public String newPhoto;
 //    public boolean requestForm;
 
+    public User(){
+        this.userId = null;
+        this.email = null;
+        this.phone = null;
+        this.name = null;
+        this.gender = false;
+        this.ttl = null;
+        this.alamat = null;
+        this.instanceId = null;
+        this.photo = null;
+    }
+    
     public User(String userId, String email, String phone, String name, boolean gender, String ttl, String alamat, String instanceId, String photo) {
         this.userId = userId;
         this.email = email;
@@ -124,11 +136,6 @@ public class User {
         return newPhoto;
     }
     
-//    public boolean getRequestForm() {
-//        return requestForm;
-//    }
-    
-//  unchecked!!!
     public boolean checkIn() {
         String xPhoto = photo.toLowerCase();
         String xNewPhoto = newPhoto.toLowerCase();

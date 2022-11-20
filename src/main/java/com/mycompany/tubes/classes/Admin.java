@@ -173,7 +173,7 @@ public class Admin {
             //}
         }
     }
-    public void viewProFile()
+    public void viewProfile()
     {
         System.out.println("---- Data Admin ----");
         System.out.println("Admin ID : "+ this.getAdminID());
