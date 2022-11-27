@@ -140,15 +140,16 @@ public class Admin {
         for(int i=0; i < index; i++)
         {
             System.out.println("Data ke-"+(i+1));
-            System.out.println("User ID : "+arrOfUser[i].getUserId());
-            System.out.println("Photo : "+arrOfUser[i].getPhoto());
-            System.out.println("Email : "+arrOfUser[i].getEmail());
-            System.out.println("Phone : "+arrOfUser[i].getPhone());
-            System.out.println("Name : "+arrOfUser[i].getName());
-            System.out.println("Gender : "+arrOfUser[i].getGender());
-            System.out.println("TTL : "+arrOfUser[i].getTtl());
-            System.out.println("Alamat : "+arrOfUser[i].getAlamat());
+            System.out.println("User ID         : "+arrOfUser[i].getUserId());
+            System.out.println("Photo           : "+arrOfUser[i].getPhoto());
+            System.out.println("Email           : "+arrOfUser[i].getEmail());
+            System.out.println("Phone           : "+arrOfUser[i].getPhone());
+            System.out.println("Name            : "+arrOfUser[i].getName());
+            System.out.println("Gender          : "+arrOfUser[i].getGender());
+            System.out.println("TTL             : "+arrOfUser[i].getTtl());
+            System.out.println("Alamat          : "+arrOfUser[i].getAlamat());
             System.out.println("CHECK-IN STATUS : "+arrOfUser[i].checkIn());
+            System.out.println("");
         }
     }
     public void viewCheckedInUser()
@@ -161,13 +162,14 @@ public class Admin {
             //{
             System.out.println("Data ke-"+(i+1));
             System.out.println("User ID : "+arrOfUserAdmitted[i].getUserId());
-            System.out.println("Photo : "+arrOfUserAdmitted[i].getPhoto());
-            System.out.println("Email : "+arrOfUserAdmitted[i].getEmail());
-            System.out.println("Phone : "+arrOfUserAdmitted[i].getPhone());
-            System.out.println("Name : "+arrOfUserAdmitted[i].getName());
-            System.out.println("Gender : "+arrOfUserAdmitted[i].getGender());
-            System.out.println("TTL : "+arrOfUserAdmitted[i].getTtl());
-            System.out.println("Alamat : "+arrOfUserAdmitted[i].getAlamat());
+            System.out.println("Photo   : "+arrOfUserAdmitted[i].getPhoto());
+            System.out.println("Email   : "+arrOfUserAdmitted[i].getEmail());
+            System.out.println("Phone   : "+arrOfUserAdmitted[i].getPhone());
+            System.out.println("Name    : "+arrOfUserAdmitted[i].getName());
+            System.out.println("Gender  : "+arrOfUserAdmitted[i].getGender());
+            System.out.println("TTL     : "+arrOfUserAdmitted[i].getTtl());
+            System.out.println("Alamat  : "+arrOfUserAdmitted[i].getAlamat());
+            System.out.println("");
             //}else{
             //    break;
             //}

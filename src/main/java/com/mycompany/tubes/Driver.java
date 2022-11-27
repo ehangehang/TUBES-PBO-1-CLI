@@ -86,7 +86,7 @@ public class Driver {
         String registInstID;
         String registPhoto;
         for (int i = 0; i < 20; i++) {
-            if (dbUsers[i].getUserId() == null) {
+            if ("?".equals(dbUsers[i].getUserId())) {
                 System.out.print("Email        : "); registEmail = scanRegist.nextLine();
                 System.out.print("No. Telp     : "); registTelp = scanRegist.nextLine();
                 System.out.print("Nama         : "); registName = scanRegist.nextLine();
@@ -96,7 +96,7 @@ public class Driver {
                 System.out.print("ID Instansi  : "); registInstID = scanRegist.nextLine();
                 System.out.print("Foto Diri    : "); registPhoto = scanRegist.nextLine();
                 boolean gender = false;
-                if (registGender.toLowerCase() == "l") {
+                if ("L".equals(registGender)) {
                     gender = true;
                 }
                 dbUsers[i] = new User(
@@ -117,11 +117,11 @@ public class Driver {
     
     public static User loginUser(User[] dbUsers, String email) {
         for (int i = 0; i < dbUsers.length; i++) {
-            if (dbUsers[i].getEmail() == email) {
+            if (dbUsers[i].getEmail() == null ? email == null : dbUsers[i].getEmail().equals(email)) {
                 return dbUsers[i];
             }
         }
-        return null;
+        return new User();
     }
     
     public static void main(String[] args) {
@@ -195,16 +195,24 @@ public class Driver {
                                 registerUser(users);
                                 admin1.addUser(users[indexer]);
                                 indexer++;
+//                                for (int i = 0; i < 5; i++) {
+//                                    users[i].displayInfo();
+//                                }
                                 break;
                             // Login
                             case 2:
                                 Scanner scanUserEmail = new Scanner(System.in);
-                                System.out.print("Email: ");String email = scanUserEmail.nextLine();
+                                System.out.print("Email: "); String email = scanUserEmail.nextLine();
                                 userCurr = loginUser(users, email);
+//                                userCurr.displayInfo();
                                 break;
                             // Check-In
                             case 3:
+                                Scanner scanNewPhoto = new Scanner(System.in);
+                                System.out.print("Selfie: "); String newPhoto = scanNewPhoto.nextLine();
+                                userCurr.setNewPhoto(newPhoto);
                                 userCurr.checkIn();
+                                admin1.admitCheckIn(userCurr);
                                 break;
                             // View Profile
                             case 5:

@@ -25,15 +25,16 @@ public class User {
 //    public boolean requestForm;
 
     public User(){
-        this.userId = null;
-        this.email = null;
-        this.phone = null;
-        this.name = null;
+        this.userId = "?";
+        this.email = "?";
+        this.phone = "?";
+        this.name = "?";
         this.gender = false;
-        this.ttl = null;
-        this.alamat = null;
-        this.instanceId = null;
-        this.photo = null;
+        this.ttl = "?";
+        this.alamat = "?";
+        this.instanceId = "?";
+        this.photo = "?";
+        this.newPhoto = "?";
     }
     
     public User(String userId, String email, String phone, String name, boolean gender, String ttl, String alamat, String instanceId, String photo) {
@@ -46,6 +47,7 @@ public class User {
         this.alamat = alamat;
         this.instanceId = instanceId;
         this.photo = photo;
+        this.newPhoto = "?";
     }
     
     public void setUserId(String userId) {
@@ -169,13 +171,14 @@ public class User {
     
     public void displayInfo() {
         System.out.println("==== Profil User ====");
-        System.out.println("Nama\t: " + getName());
-        System.out.println("Email\t: " + getEmail());
-        System.out.println("No.Telp\t: " + getPhone());
-        System.out.println("Gender\t: " + getGender());
-        System.out.println("TTL\t: " + getTtl());
-        System.out.println("Alamat\t: " + getAlamat());
+        System.out.println("Nama\t\t: " + getName());
+        System.out.println("Email\t\t: " + getEmail());
+        System.out.println("No.Telp\t\t: " + getPhone());
+        System.out.println("Gender\t\t: " + getGender());
+        System.out.println("TTL\t\t: " + getTtl());
+        System.out.println("Alamat\t\t: " + getAlamat());
         System.out.println("Foto profil\t: " + getPhoto());
+        System.out.println("");
     }
     
 }
